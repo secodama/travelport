@@ -8,7 +8,12 @@ module Travelport::Model::AttributeMethods
 
   def update_attributes(hash)
     hash.each do |key, val|
-      self.send("#{key.to_s.gsub('@', '')}=", val)
+      attribute_setter = "#{key.to_s.gsub('@', '')}=".to_sym
+      if self.respond_to?(attribute_setter)
+        self.send(attribute_setter, val)
+      else
+        # unrecognised option
+      end
     end
   end
 end
