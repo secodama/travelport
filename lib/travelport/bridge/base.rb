@@ -24,7 +24,7 @@ module Travelport::Bridge
         wsdl.endpoint = Travelport.config.endpoint.gsub('Service', service)
         wsdl.document = File.join(Travelport.config.document_dir, document)
         http.auth.ssl.verify_mode = :none
-        http.auth.basic(Travelport.config.login, Travelport.config.password)
+        http.auth.basic(Travelport.config.username, Travelport.config.password)
       end
     end
   end

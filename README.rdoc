@@ -1,0 +1,36 @@
+= Travelport {<img src="https://secure.travis-ci.org/evendis/travelport.png" />}[http://travis-ci.org/evendis/travelport]
+
+Travelport is a gem that wraps the {Travelport}[http://developer.travelport.com/] API so that you can hook into availability and booking
+without having to deal with the nitty-gritty of the API.
+
+== Installation
+
+Add this line to your application's Gemfile:
+
+    gem 'travelport'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install travelport
+
+== The Travelport Cookbook
+
+=== How do I configure Travelport?
+
+
+=== How do I make a direct API call?
+
+
+== Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
+5. Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+6. Push to the branch (`git push origin my-new-feature`)
+7. Create new Pull Request
