@@ -21,6 +21,18 @@ Or install it yourself as:
 
 === How do I configure Travelport?
 
+By default, travelport loads with a configuration pointing to the test Americas environment.
+
+To configure production settings, use the setup block:
+
+    Travelport.setup do |config|
+      config.env = :production_americas          # or :production_emea or :production_apac
+      config.username = 'my_username'
+      config.password = 'my_pasword'
+      config.target_branch = 'my_branch_id'
+      config.point_of_sale = 'my_pos_id'         # by defualt this will be 'uAPI'
+    end
+
 
 === How do I make a direct API call?
 

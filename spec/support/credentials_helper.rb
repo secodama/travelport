@@ -3,11 +3,13 @@ module CredentialsHelper
   # Command: sets test API credentials
   def set_test_api_credentials
     real_api_credentials_available?
-    Travelport.config.username = test_username
-    Travelport.config.password = test_password
-    Travelport.config.target_branch = test_branch_code
-    Travelport.config.point_of_sale = test_point_of_sale
-    Travelport.config.endpoint = test_endpoint
+    Travelport.setup do |config|
+      config.username = test_username
+      config.password = test_password
+      config.target_branch = test_branch_code
+      config.point_of_sale = test_point_of_sale
+      config.endpoint = test_endpoint
+    end
   end
 
   # Returns true if real test credentials have been configured
