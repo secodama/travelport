@@ -28,8 +28,8 @@ class Travelport::Model::HotelProperty < Travelport::Model::Base
 
   end
 
-  # Command: gets hotel details response given +options+
-  def hotel_details(options)
-    self.class.bridge.hotel_details(hotel_chain, hotel_code, options)
+  # Command: gets hotel rates response given +options+
+  def rates(options)
+    self.class.bridge.hotel_details(hotel_chain, hotel_code, options).try(:hotel_rate_details) || []
   end
 end

@@ -11,12 +11,13 @@ describe Travelport::Model::HotelProperty do
     its(:first) { should be_a(Travelport::Model::HotelProperty) }
   end
 
-  describe "hotel_details" do
+  describe "rates" do
     use_vcr_cassette
     let(:property) { model_class.new({:hotel_chain => 'CP', :hotel_code => '02743'}) }
     let(:detail_options) { { checkin:Time.new + 5.days, checkout:Time.new+10.days} }
-    subject { property.hotel_details(detail_options) }
-    it { should be_a(Travelport::Response::HotelDetailsRsp) }
+    subject { property.rates(detail_options) }
+    it { should be_an(Array) }
+    its(:first) { should be_a(Travelport::Model::HotelRate) }
   end
 
 end
