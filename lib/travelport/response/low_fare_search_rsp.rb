@@ -41,9 +41,5 @@ module Travelport::Response
       end]
     end
 
-    protected
-    def raw_content
-      @raw_content[:low_fare_search_rsp]
-    end
 	end
 end

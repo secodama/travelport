@@ -11,10 +11,10 @@ describe Travelport::Bridge::Hotel do
     it { should be_a(Travelport::Response::HotelSearchAvailabilityRsp) }
   end
 
-  context 'details query' do
-    use_vcr_cassette
-    subject { bridge.hotel_details('CP', '02743', { checkin:Time.new + 5.days, checkout:Time.new+10.days}) }
-    it { should be_a(Travelport::Response::HotelDetailsRsp) }
-  end
+  # context 'details query' do
+  #   use_vcr_cassette
+  #   subject { bridge.hotel_details('CP', '02743', { checkin:Time.new + 5.days, checkout:Time.new+10.days}) }
+  #   it { should be_a(Travelport::Response::HotelDetailsRsp) }
+  # end
 
 end
