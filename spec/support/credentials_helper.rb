@@ -2,7 +2,6 @@ module CredentialsHelper
 
   # Command: sets test API credentials
   def set_test_api_credentials
-    real_api_credentials_available?
     Travelport.setup do |config|
       config.username = test_username
       config.password = test_password
@@ -14,11 +13,11 @@ module CredentialsHelper
 
   # Returns true if real test credentials have been configured
   def real_api_credentials_available?
-    result = if real_test_username && real_test_password
+    if real_test_username && real_test_password
       STDERR.puts %{
 NOTE: real api_credentials are configured so if the integration tests are missing request cassettes,
 live queries will be performed to record the actual interaction.
-      } unless @api_credentials_help_given
+      }
       true
     else
       STDERR.puts %{
@@ -30,14 +29,10 @@ they will fail. Set real API credentials with environment variables:
   export TEST_TRAVELPORT_BRANCH_CODE=P0000000
   export TEST_TRAVELPORT_POS=uAPI
 
-      } unless @api_credentials_help_given
-      STDERR.puts ""
+      }
       false
     end
-    @api_credentials_help_given = true
-    result
   end
-
 
   # Returns the username to use for tests
   def test_username

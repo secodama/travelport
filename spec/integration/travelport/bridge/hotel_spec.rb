@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Travelport::Bridge::Hotel do
 
-  set_test_api_credentials
 
   let(:bridge) { Travelport::Bridge::Hotel.new }
 

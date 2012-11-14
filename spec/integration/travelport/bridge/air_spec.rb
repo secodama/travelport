@@ -2,8 +2,6 @@ require 'spec_helper'
 
 describe Travelport::Bridge::Air do
 
-  set_test_api_credentials
-
   let(:bridge) { Travelport::Bridge::Air.new }
 
   context 'general search query' do
