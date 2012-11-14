@@ -6,6 +6,10 @@ module Travelport::Response
       process unless @raw_content.nil?
     end
 
+    # Command: process response content on load. Override in subclasses as required.
+    def process
+    end
+
     # Returns the expected response content element
     def content_selector
       self.class.name.underscore.split('/').last.to_sym
