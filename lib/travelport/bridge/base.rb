@@ -20,11 +20,11 @@ module Travelport::Bridge
 
     protected
     def client
-      @client ||= Savon::Client.new do
-        wsdl.endpoint = Travelport.config.endpoint.gsub('Service', service)
-        wsdl.document = File.join(Travelport.config.document_dir, document)
-        http.auth.ssl.verify_mode = :none
-        http.auth.basic(Travelport.config.username, Travelport.config.password)
+      @client ||= Savon.client do |globals|
+        globals.endpoint Travelport.config.endpoint.gsub('Service', service)
+        globals.wsdl File.join(Travelport.config.document_dir, document)
+        globals.ssl_verify_mode :none
+        globals.basic_auth [ Travelport.config.username, Travelport.config.password ]
       end
     end
   end
