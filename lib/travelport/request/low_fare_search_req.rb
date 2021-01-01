@@ -13,7 +13,7 @@ module Travelport::Request
     default_for :children, 1
     default_for :provider_code, '1G'
     default_for :cabin, 'Economy'
-    default_for :xmlns, 'http://www.travelport.com/schema/air_v20_0'
+    default_for :xmlns, 'http://www.travelport.com/schema/air_v50_0'
 
     validates_presence_of :sectors
     validates_presence_of :adults
