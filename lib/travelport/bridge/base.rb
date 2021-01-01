@@ -12,10 +12,7 @@ module Travelport::Bridge
       req_obj.target_branch = Travelport.config.target_branch
       req_obj.billing_point_of_sale = Travelport.config.point_of_sale
       raise Travelport::Exceptions::BadRequest, "Request #{req_obj.request_name} is wrong(#{req_obj.errors.to_a})" unless req_obj.valid?
-      client.request(req_obj.request_name, req_obj.request_attributes) do
-        http.headers['SOAPAction'] = ""
-        soap.body = req_obj.request_body
-      end.body
+      client.call(req_obj.request_name, req_obj.request_body).body
     end
 
     protected
