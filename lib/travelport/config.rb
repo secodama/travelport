@@ -37,7 +37,7 @@ class Travelport
     }.freeze
 
     def initialize
-      self.env = :test_americas
+      self.env = :production_apac
     end
 
     def env=(value)
