@@ -25,14 +25,14 @@ module Travelport::Request
     def request_body
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.root {
-          xml.BillingPointOfSaleInfo('OriginApplication' => billing_point_of_sale, 'xmlns' => 'http://www.travelport.com/schema/common_v17_0')
+          xml.BillingPointOfSaleInfo('OriginApplication' => billing_point_of_sale, 'xmlns' => 'http://www.travelport.com/schema/common_v50_0')
           sectors.each do |sector|
             xml.SearchAirLeg {
               xml.SearchOrigin {
-                xml.CityOrAirport('Code' => sector[:from], 'xmlns' => 'http://www.travelport.com/schema/common_v17_0')
+                xml.CityOrAirport('Code' => sector[:from], 'xmlns' => 'http://www.travelport.com/schema/common_v50_0')
               }
               xml.SearchDestination {
-                xml.CityOrAirport('Code' => sector[:to], 'xmlns' => 'http://www.travelport.com/schema/common_v17_0')
+                xml.CityOrAirport('Code' => sector[:to], 'xmlns' => 'http://www.travelport.com/schema/common_v50_0')
               }
               xml.SearchDepTime('PreferredTime' => sector[:at].strftime('%Y-%m-%d'))
               unless cabin.nil?
@@ -46,12 +46,12 @@ module Travelport::Request
           end
           xml.AirSearchModifiers {
             xml.PreferredProviders {
-              xml.Provider('Code' => provider_code, 'xmlns' => 'http://www.travelport.com/schema/common_v17_0')
+              xml.Provider('Code' => provider_code, 'xmlns' => 'http://www.travelport.com/schema/common_v50_0')
             }
           }
-          adults.times { xml.SearchPassenger('Code' => 'ADT', 'xmlns' => 'http://www.travelport.com/schema/common_v17_0')}
-          children.times { xml.SearchPassenger('Code' => 'CNN', 'Age' => 10, 'xmlns' => "http://www.travelport.com/schema/common_v17_0")} unless children.nil?
-          infants.times { xml.SearchPassenger('Code' => 'INF', 'Age' => 1, 'xmlns' => 'http://www.travelport.com/schema/common_v17_0')} unless infants.nil?
+          adults.times { xml.SearchPassenger('Code' => 'ADT', 'xmlns' => 'http://www.travelport.com/schema/common_v50_0')}
+          children.times { xml.SearchPassenger('Code' => 'CNN', 'Age' => 10, 'xmlns' => "http://www.travelport.com/schema/common_v50_0")} unless children.nil?
+          infants.times { xml.SearchPassenger('Code' => 'INF', 'Age' => 1, 'xmlns' => 'http://www.travelport.com/schema/common_v50_0')} unless infants.nil?
         }
       end
       builder.doc.root.children.to_xml
